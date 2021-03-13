@@ -7,7 +7,9 @@ class Home extends Controller
 
     function index()
     {
-        echo 'Hello World';
+        $this->view("Home_index", [
+            
+        ]);
     }
     // Must have SayHi()
     function SayHi()
