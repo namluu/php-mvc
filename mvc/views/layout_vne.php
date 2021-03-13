@@ -1,4 +1,6 @@
-
+<?php
+$baseUrl = 'http://localhost/vnexpress/';
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,23 +11,17 @@
     <meta name="generator" content="Hugo 0.80.0">
     <title>Starter Template · Bootstrap v5.0</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
-
-    
-
+    <link rel="canonical" href="<?=$baseUrl?>">
     <!-- Bootstrap core CSS -->
-<link href="public/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+    <link href="<?=$baseUrl?>public/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- Favicons -->
-<!-- <link rel="apple-touch-icon" href="public/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="public/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="public/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="public/favicons/manifest.json"> 
-<link rel="mask-icon" href="public/favicons/safari-pinned-tab.svg" color="#7952b3"> -->
-<link rel="icon" href="public/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
+    <!-- <link rel="apple-touch-icon" href="public/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="public/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="public/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="public/favicons/manifest.json">
+    <link rel="mask-icon" href="public/favicons/safari-pinned-tab.svg" color="#7952b3"> -->
+    <link rel="icon" href="<?=$baseUrl?>public/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -41,10 +37,8 @@
         }
       }
     </style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="public/css/starter-template.css" rel="stylesheet">
+    <link href="<?=$baseUrl?>public/css/starter-template.css" rel="stylesheet">
   </head>
   <body>
     
@@ -84,17 +78,14 @@
 </nav>
 
 <main class="container">
-
-  <div class="starter-template text-center py-5 px-3">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-  </div>
-
+<?php
+if (array_key_exists('content', $data)) {
+    require_once $data['content'].'.php';
+}
+?>
 </main><!-- /.container -->
 
+    <script src="<?=$baseUrl?>public/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    <script src="public/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-      
   </body>
 </html>

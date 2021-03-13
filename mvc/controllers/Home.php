@@ -1,25 +1,23 @@
 <?php
 
-// http://localhost/live/Home/Show/1/2
-
 class Home extends Controller
 {
-
-    function index()
+    public function index()
     {
-        $this->view("Home_index", [
-            
+        $this->view("layout_vne", [
+            'content' => 'home/index'
         ]);
     }
-    // Must have SayHi()
-    function SayHi()
+
+    public function sayHi()
     {
         $teo = $this->model("SinhVienModel");
         echo $teo->GetSV();
     }
 
-    function Show($a, $b)
-    {        
+    public function show($a, $b)
+    {
+        var_dump($a.$b);
         // Call Models
         $teo = $this->model("SinhVienModel");
         $tong = $teo->Tong($a, $b); // 3
