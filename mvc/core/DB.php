@@ -2,15 +2,15 @@
 
 class DB
 {
-    public $con;
+    public $connection;
     protected $servername = "localhost";
     protected $username = "root";
     protected $password = "";
     protected $dbname = "vnexpress";
 
     function __construct(){
-        $this->con = mysqli_connect($this->servername, $this->username, $this->password);
-        mysqli_select_db($this->con, $this->dbname);
-        mysqli_query($this->con, "SET NAMES 'utf8'");
+        $this->connection = mysqli_connect($this->servername, $this->username, $this->password);
+        mysqli_select_db($this->connection, $this->dbname);
+        mysqli_query($this->connection, "SET NAMES 'utf8'");
     }
 }
