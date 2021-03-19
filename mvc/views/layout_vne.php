@@ -1,5 +1,5 @@
 <?php
-$baseUrl = 'http://localhost/vnexpress/';
+global $baseUrl;
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,21 +37,13 @@ $baseUrl = 'http://localhost/vnexpress/';
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <?php if (isset($data['categories'])): ?>
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <?php while($category = $data['categories']->fetch_assoc()): ?>
+                <?php foreach ($data['categories'] as $category): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$baseUrl.'news/category/'.$category['alias']?>">
-                            <?= $category['name'] ?>
+                        <a class="nav-link" href="<?=$baseUrl.'news/category/'.$category->alias?>">
+                            <?= $category->name ?>
                         </a>
                     </li>
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">--><?//= $category['name'] ?><!--</a>-->
-<!--                        <ul class="dropdown-menu">-->
-<!--                            <li><a class="dropdown-item" href="#">--><?//= $category['name'] ?><!--</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </ul>
             <?php endif; ?>
             <form class="d-flex">
