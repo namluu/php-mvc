@@ -32,12 +32,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <?php if (isset($data['categories'])): ?>
+            <?php if (isset($menuCategories)): ?>
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <?php foreach ($data['categories'] as $category): ?>
+                <?php foreach ($menuCategories as $menu): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=BASE_URL.'news/category/'.$category->alias?>">
-                            <?= $category->name ?>
+                        <a class="nav-link" href="<?=BASE_URL.'news/category/'.$menu->alias?>">
+                            <?= $menu->name ?>
                         </a>
                     </li>
                 <?php endforeach; ?>
@@ -53,8 +53,8 @@
 
 <main class="container">
     <?php
-    if (array_key_exists('content', $data)) {
-        require_once $data['content'].'.php';
+    if (isset($content)) {
+        require_once $content.'.php';
     }
     ?>
 </main><!-- /.container -->

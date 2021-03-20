@@ -10,7 +10,8 @@ class Controller
     public function view($view, $data=[])
     {
         $categories = $this->model('CategoryModel')->getList();
-        $data['categories'] = $categories;
+        $data['menuCategories'] = $categories;
+        extract($data);
         require_once "./mvc/views/".$view.".php";
     }
 

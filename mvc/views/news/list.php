@@ -1,1 +1,1 @@
-<h1><?= $data['category']['name'] ?></h1>
+<h1><?= $category->name ?></h1>
