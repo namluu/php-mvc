@@ -1,6 +1,5 @@
 <?php
-$baseUrl = 'http://php-vnexpress.local/';
-
+define('BASE_URL', 'http://php-vnexpress.local/');
 // Database connectivity setup
 define('DB_PERSISTENCY', 'true');
 define('DB_SERVER', 'localhost');
