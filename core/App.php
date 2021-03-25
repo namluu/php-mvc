@@ -1,8 +1,8 @@
 <?php
 class App
 {
-    protected $controller = "Home";
-    protected $action = "index";
+    protected $controller = 'Home';
+    protected $action = 'index';
     protected $params = [];
     protected $is404 = false;
 
@@ -17,19 +17,23 @@ class App
 
     public function UrlProcess()
     {
-        if( isset($_GET["url"]) ){
+        if (isset($_GET["url"])){
             return explode("/", filter_var(trim($_GET["url"], "/")));
         }
+        return [];
     }
 
     public function setController()
     {
-        if ( isset($this->params[0]) ) {
+        if (isset($this->params[0])) {
             $this->controller = ucfirst($this->params[0]);
+            if ($this->params[0] == ADMIN_URI) {
+                $this->controller = 'Admin';
+            }
             unset($this->params[0]);
         }
 
-        if( !file_exists("./mvc/controllers/".$this->controller.".php") ){
+        if (!file_exists("./mvc/controllers/".$this->controller.".php")){
             $this->setErrorHandle404();
         }
 
@@ -38,9 +42,9 @@ class App
 
     public function setAction()
     {
-        if( $this->is404 ) return;
+        if ($this->is404) return;
 
-        if ( isset($this->params[1]) ) {
+        if (isset($this->params[1])) {
             $this->action = $this->params[1];
             unset($this->params[1]);
         }

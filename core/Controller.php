@@ -15,4 +15,9 @@ class Controller
         require_once "./mvc/views/".$view.".php";
     }
 
+    public function redirect($url)
+    {
+        header('Location: ' . $url);
+        exit();
+    }
 }

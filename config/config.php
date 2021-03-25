@@ -1,5 +1,7 @@
 <?php
 define('BASE_URL', 'http://php-vnexpress.local/');
+define('ADMIN_URI', 'backendfgh');
+define('ADMIN_URL', BASE_URL.ADMIN_URI);
 // Database connectivity setup
 define('DB_PERSISTENCY', 'true');
 define('DB_SERVER', 'localhost');
