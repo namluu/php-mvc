@@ -40,6 +40,14 @@
                     </ul>
                 </li>
             </ul>
+            <ul class="navbar-nav px-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#">Hello: Admin</a>
+                </li>
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="<?=ADMIN_URL?>/logout">Sign out</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
