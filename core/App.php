@@ -5,10 +5,12 @@ class App
     protected $action = 'index';
     protected $params = [];
     protected $is404 = false;
+    protected $isAdmin = false;
 
     function __construct()
     {
         $this->params = $this->UrlProcess();
+        $this->handleAdmin();
         $this->setController();
         $this->setAction();
         $this->setParameters();
@@ -25,19 +27,41 @@ class App
 
     public function setController()
     {
+        if ($this->isAdmin) {
+            $this->includeAdminController();
+        } else {
+            $this->includeFrontendController();
+        }
+    }
+
+    public function includeFrontendController()
+    {
         if (isset($this->params[0])) {
             $this->controller = ucfirst($this->params[0]);
-            if ($this->params[0] == ADMIN_URI) {
-                $this->controller = 'Admin';
-            }
             unset($this->params[0]);
         }
-
-        if (!file_exists("./mvc/controllers/".$this->controller.".php")){
+        if (file_exists("./mvc/controllers/".$this->controller.".php")){
+            require_once "./mvc/controllers/" . $this->controller . ".php";
+            $this->controller = new $this->controller;
+        } else {
             $this->setErrorHandle404();
         }
+    }
 
-        $this->includeController();
+    public function includeAdminController()
+    {
+        if (isset($this->params[0])) {
+            $this->controller = ucfirst($this->params[0]);
+            unset($this->params[0]);
+        } else {
+            $this->controller = 'Admin';
+        }
+        if (file_exists("./mvc/controllers/admin/".$this->controller.".php")){
+            require_once "./mvc/controllers/admin/" . $this->controller . ".php";
+            $this->controller = new $this->controller;
+        } else {
+            $this->setErrorHandle404();
+        }
     }
 
     public function setAction()
@@ -51,7 +75,6 @@ class App
 
         if (!method_exists( $this->controller, $this->action)) {
             $this->setErrorHandle404();
-            $this->includeController();
         }
     }
 
@@ -68,13 +91,17 @@ class App
     public function setErrorHandle404()
     {
         $this->controller = 'ErrorHandler';
+        require_once "./mvc/controllers/" . $this->controller . ".php";
+        $this->controller = new $this->controller;
         $this->action = 'show404';
         $this->is404 = true;
     }
 
-    public function includeController()
+    public function handleAdmin()
     {
-        require_once "./mvc/controllers/" . $this->controller . ".php";
-        $this->controller = new $this->controller;
+        if (isset($this->params[0]) && $this->params[0] == ADMIN_URI) {
+            array_shift($this->params);
+            $this->isAdmin = true;
+        }
     }
 }

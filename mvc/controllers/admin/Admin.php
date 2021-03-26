@@ -4,7 +4,7 @@ class Admin extends Controller
     public function index()
     {
         if (!(isset ($_SESSION['admin_logged'])) || $_SESSION['admin_logged'] != true) {
-            $this->redirect(ADMIN_URL.'/login');
+            $this->redirect(ADMIN_URL.'/admin/login');
         }
         $this->view("layout_admin", [
             'content' => 'admin/index'
@@ -15,7 +15,7 @@ class Admin extends Controller
     {
         $message = '';
         if (isset($_POST['submit'])) {
-            if ($_POST['username'] == 'admin' && $_POST['password'] == 'admin') {
+            if ($_POST['username'] == 'nam.luu' && $_POST['password'] == 'admin123') {
                 $_SESSION['admin_logged'] = true;
                 $this->redirect(ADMIN_URL);
             }
@@ -30,6 +30,6 @@ class Admin extends Controller
     public function logout()
     {
         unset($_SESSION['admin_logged']);
-        $this->redirect(ADMIN_URL.'/login');
+        $this->redirect(ADMIN_URL.'/admin/login');
     }
 }

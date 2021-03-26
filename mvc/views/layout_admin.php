@@ -35,8 +35,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">CMS</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Category</a></li>
-                        <li><a class="dropdown-item" href="#">Article</a></li>
+                        <li><a class="dropdown-item" href="<?=ADMIN_URL?>/category">Category</a></li>
+                        <li><a class="dropdown-item" href="<?=ADMIN_URL?>/article">Article</a></li>
                     </ul>
                 </li>
             </ul>
@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#">Hello: Admin</a>
                 </li>
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="<?=ADMIN_URL?>/logout">Sign out</a>
+                    <a class="nav-link" href="<?=ADMIN_URL?>/admin/logout">Sign out</a>
                 </li>
             </ul>
         </div>

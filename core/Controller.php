@@ -9,8 +9,9 @@ class Controller
 
     public function view($view, $data=[])
     {
-        $categories = $this->model('CategoryModel')->getList();
-        $data['menuCategories'] = $categories;
+        if ($view == 'layout_vne') {
+            $data['menuCategories'] = $this->model('CategoryModel')->getList();
+        }
         extract($data);
         require_once "./mvc/views/".$view.".php";
     }
