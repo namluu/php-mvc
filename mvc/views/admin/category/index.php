@@ -1,4 +1,5 @@
 <h1>category index</h1>
+<p><a class="btn btn-primary" href="<?=ADMIN_URL?>/category/add">Add new</a></p>
 <table class="table table-bordered border-primary">
     <tr class="table-primary">
         <th>ID</th>
@@ -17,7 +18,7 @@
         <td><?= $category->is_enabled ?></td>
         <td><?= $category->created ?></td>
         <td><a href="<?=ADMIN_URL?>/category/edit/<?=$category->id?>">Edit</a></td>
-        <td><a href="<?=ADMIN_URL?>/category/delete/<?=$category->id?>">Delete</a></td>
+        <td><a href="<?=ADMIN_URL?>/category/delete/<?=$category->id?>" onclick="return confirmDelete();">Delete</a></td>
     </tr>
     <?php endforeach; ?>
 </table>
