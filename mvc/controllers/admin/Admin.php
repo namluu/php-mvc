@@ -3,7 +3,7 @@ class Admin extends Controller
 {
     public function index()
     {
-        if (!(isset ($_SESSION['admin_logged'])) || $_SESSION['admin_logged'] != true) {
+        if (!(isset($_SESSION['admin_logged'])) || $_SESSION['admin_logged'] != true) {
             $this->redirect(ADMIN_URL.'/admin/login');
         }
         $this->view("layout_admin", [
